@@ -13,13 +13,58 @@
 
 <body>
 
-    <p id="test">Danny</p>
+    <p id="para">Danny</p>
+    <button id="test">click</button>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <p id="p1">Hover me!</p>
+    <p id="p2">Click me!</p>
+    <p id="p3">Double click me!</p>
+    <p id="p4">Leave me alone</p>
+    <p>Press [enter]</p>
 
     <script>
         $(document).ready(function() {
             $("#test").click(function () {
-                $(this).hide();
+                $("#para").hide();
             });
+
+            $("#p1").hover(function() {
+                $(this).hide();
+            }); 
+
+            $("#p2").click(function() {
+                $(this).hide();
+            }); 
+
+            $("#p3").dblclick(function() {
+                $(this).hide();
+            }); 
+
+            $("#p4").mouseout(function() {
+                $(this).hide();
+            }); 
+
+            var menuTrigger = false;
+            $(document).keypress(function(e) {
+                if(e.which == 13) {
+                    if (menuTrigger === false) {
+                        $("nav").fadeIn(500);
+                        menuTrigger = true;
+                    }
+                    else {
+                        $("nav").fadeOut(500);
+                        menuTrigger = false;
+                    }
+                }
+            })
         }); 
 
     </script>
